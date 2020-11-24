@@ -6,9 +6,13 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
+      circleName : {
+        type : DataTypes.STRING(255),
+        allowNull: false,
+      },
       school : {
         type : DataTypes.STRING(255),
-        allowNull: true,
+        allowNull: false,
       },
       poperty : {
         type : DataTypes.STRING(255),
@@ -23,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       paranoid: true,
       charset:'utf8',
       collate:'utf8_general_ci',
+      tableName:'authapi_circle',
     })
     return authapi_circle;
 };
