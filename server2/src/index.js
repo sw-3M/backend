@@ -3,7 +3,8 @@ const app = express();
 const { sequelize } = require('./models');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const api = require('./api');
+const colorConsole = require('./lib/console');
+// const api = require('./api');
 
 sequelize.sync();
 
@@ -12,8 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use('/', api);
+// app.use('/', api);
 
 app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트에서 대기중');
+    colorConsole.green(`server is running at port ${app.get('port')}`);
 });
