@@ -4,45 +4,25 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 exports.viewMentor = async (req, res) => {
     try {
+        const school_name = req.param('school_name');
         const mentorData = await models.authapi_user.findAll({
             attributes: ['username', 'school', 'facebook', 'kakao'],
             where: {
-                [Op.and] : [
-                    {[Op.or]: [
+                school : school_name,
+                [Op.or]: [
+                    {
+                        facebook: 
                         {
-                            school: 
-                            {
-                                [Op.eq]: '대덕소프트웨어마이스터고등학교'
-                            }
-                        }, 
-                        {
-                            school: 
-                            {
-                                [Op.eq]: '대구소프트웨어고등학교'
-                            }
-                        }, 
-                        {
-                            school: 
-                            {
-                                [Op.eq]: '광주소프트웨어마이스터고등학교'
-                            }
+                            [Op.ne]: null
                         }
-                    ]},
-                    {[Op.or]: [
+                    }, 
+                    {
+                        kakao: 
                         {
-                            facebook: 
-                            {
-                                [Op.ne]: null
-                            }
-                        }, 
-                        {
-                            kakao: 
-                            {
-                                [Op.ne]: null
-                            }
-                        }, 
-                    ]},
-                ]
+                            [Op.ne]: null
+                        }
+                    }, 
+                ],
             },
                 raw: true
             });

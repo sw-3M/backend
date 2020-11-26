@@ -16,4 +16,7 @@ db.authapi_circle = require('./authapi_circle.js')(sequelize, Sequelize);
 
 db.authtoken_token.belongsTo(db.authapi_user, {foreignKey: 'user_id'});
 
+db.authapi_user.hasMany(db.authapi_circle);
+db.authapi_circle.belongsTo(db.authapi_user);
+
 module.exports = db;

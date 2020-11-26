@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         type : DataTypes.STRING(255),
         allowNull: false,
       },
-      school : {
+      school_name : {
         type : DataTypes.STRING(255),
         allowNull: false,
       },
-      poperty : {
+      property : {
         type : DataTypes.STRING(255),
         allowNull: false,
       },
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       }
     }, {
-      timestamps: true,
+      timestamps: false,
       paranoid: true,
       charset:'utf8',
       collate:'utf8_general_ci',
